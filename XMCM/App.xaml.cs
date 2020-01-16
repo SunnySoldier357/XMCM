@@ -1,28 +1,26 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Caliburn.Micro;
+using Caliburn.Micro.Xamarin.Forms;
+
+using XMCM.ViewModels;
 
 namespace XMCM
 {
-	public partial class App : Application
+	public partial class App : FormsApplication
 	{
-		public App()
-		{
-			InitializeComponent();
+		//* Private Properties
+		private readonly SimpleContainer _container;
 
-			MainPage = new MainPage();
-		}
-
-		protected override void OnStart()
+		//* Constructors
+		public App(SimpleContainer container)
 		{
-		}
+			_container = container;
 
-		protected override void OnSleep()
-		{
-		}
+			_container
+				.PerRequest<ShellViewModel>();
 
-		protected override void OnResume()
-		{
+			Initialize();
+
+			DisplayRootViewFor<ShellViewModel>();
 		}
 	}
 }
