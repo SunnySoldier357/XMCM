@@ -1,8 +1,6 @@
-﻿<Application
-    x:Class="XMCM.UWP.App"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:XMCM.UWP"
-    RequestedTheme="Light">
-
-</Application>
+﻿<cm:CaliburnApplication x:Class="XMCM.UWP.App"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:cm="using:Caliburn.Micro"
+                        xmlns:local="using:XMCM.UWP"
+                        RequestedTheme="Light" />
