@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView x:Class="XMCM.Views.Activity.BindingsView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cm="clr-namespace:Caliburn.Micro.Xamarin.Forms;assembly=Caliburn.Micro.Xamarin.Forms"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ListView ItemsSource="{Binding Activities}"
+                  HasUnevenRows="True"
+                  SelectedItem="{Binding SelectedActivity, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ContentView HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand"
+                                     cm:View.Model="{Binding}" />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackLayout Grid.Row="1"
+                     Orientation="Horizontal"
+                     Padding="12">
+            <Label Text="Selected:"
+                   FontAttributes="Bold" />
+
+            <Label Text="{Binding SelectedActivity.Title}" />
+        </StackLayout>
+    </Grid>
+</ContentView>

@@ -20,7 +20,8 @@ namespace XMCM.ViewModels
 
 			Features = new BindableCollection<FeatureViewModel>
 			{
-				// TODO: Add FeatureViewModels
+				new FeatureViewModel("Binding Conventions", "Binding view model properties to your view.",
+					typeof(BindingsViewModel))
 			};
 		}
 
