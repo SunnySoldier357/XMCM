@@ -1,6 +1,10 @@
 ﻿using Caliburn.Micro;
 using Caliburn.Micro.Xamarin.Forms;
 
+using System.Linq;
+
+using Xamarin.Forms;
+
 using XMCM.ViewModels;
 
 namespace XMCM
@@ -15,12 +19,24 @@ namespace XMCM
 		{
 			_container = container;
 
-			_container
-				.PerRequest<ShellViewModel>();
+			// Register all ViewModels
+			GetType().Assembly.GetTypes()
+				.Where(type => type.IsClass)
+				.Where(type => type.Name.EndsWith("ViewModel"))
+				.ToList()
+				.ForEach(viewModelType => _container.RegisterPerRequest(
+					viewModelType, viewModelType.ToString(), viewModelType));
 
 			Initialize();
 
-			DisplayRootViewFor<ShellViewModel>();
+			MessageBinder.SpecialValues.Add("$selectedItem", c =>
+			{
+				var listView = c.Source as ListView;
+
+				return listView?.SelectedItem;
+			});
+
+			DisplayRootViewFor<MenuViewModel>();
 		}
 	}
 }

@@ -46,7 +46,7 @@ namespace XMCM.iOS
 			return new[]
 			{
 				GetType().Assembly,
-				typeof(ShellViewModel).Assembly
+				typeof(MenuViewModel).Assembly
 			};
 		}
 	}

@@ -58,7 +58,7 @@ namespace XMCM.Droid
 			return new[]
 			{
 				GetType().Assembly,
-				typeof(ShellViewModel).Assembly
+				typeof(MenuViewModel).Assembly
 			};
 		}
 	}

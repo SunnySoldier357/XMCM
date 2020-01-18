@@ -4,8 +4,8 @@ using Xamarin.Forms.Xaml;
 namespace XMCM.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ShellView : ContentPage
+	public partial class FeatureView : ContentView
 	{
-		public ShellView() => InitializeComponent();
+		public FeatureView() => InitializeComponent();
 	}
 }
