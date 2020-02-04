@@ -5,7 +5,7 @@ using System.Linq;
 
 using Xamarin.Forms;
 
-using XMCM.ViewModels;
+using XMCM.Views;
 
 namespace XMCM
 {
@@ -36,7 +36,11 @@ namespace XMCM
 				return listView?.SelectedItem;
 			});
 
-			DisplayRootViewFor<MenuViewModel>();
+			DisplayRootView<MenuView>();
 		}
+
+		//* Overridden Methods
+		protected override void PrepareViewFirst(NavigationPage navigationPage) =>
+			_container.Instance<INavigationService>(new NavigationPageAdapter(navigationPage));
 	}
 }

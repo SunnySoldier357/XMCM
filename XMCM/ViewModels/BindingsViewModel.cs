@@ -1,7 +1,5 @@
 ﻿using Caliburn.Micro;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 using XMCM.ViewModels.Activity;
 
 namespace XMCM.ViewModels

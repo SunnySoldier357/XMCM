@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using System.Reflection;
 
 using Windows.ApplicationModel.Activation;
-
-using Xamarin.Forms;
+using Windows.UI.Core;
+using Windows.UI.Popups;
+using Windows.UI.Xaml.Controls;
 
 using XMCM.ViewModels;
 
@@ -20,7 +21,7 @@ namespace XMCM.UWP
         //* Constructors
         public App()
         {
-            Initialize();
+            // Initialize();
             InitializeComponent();
         }
 
@@ -54,10 +55,34 @@ namespace XMCM.UWP
             if (args.PreviousExecutionState == ApplicationExecutionState.Running)
                 return;
 
-            Forms.Init(args);
+            Initialize();
+            Xamarin.Forms.Forms.Init(args);
 
             // Loads our MainPage as the root frame
             DisplayRootView<MainPage>();
+        }
+
+        protected override async void OnUnhandledException(object sender,
+            Windows.UI.Xaml.UnhandledExceptionEventArgs args)
+        {
+            //args.Handled = true;
+
+            //var dialog = new MessageDialog(args.Message, "An error has occurred");
+
+            //await dialog.ShowAsync();
+        }
+
+        protected override void PrepareViewFirst(Frame rootFrame)
+        {
+            //var navigationService = _container.RegisterNavigationService(rootFrame);
+            //var navigationManager = SystemNavigationManager.GetForCurrentView();
+
+            //navigationService.Navigated += (s, e) =>
+            //{
+            //    navigationManager.AppViewBackButtonVisibility = navigationService.CanGoBack ?
+            //        AppViewBackButtonVisibility.Visible :
+            //        AppViewBackButtonVisibility.Collapsed;
+            //};
         }
 
         protected override IEnumerable<Assembly> SelectAssemblies()
